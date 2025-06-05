@@ -1,0 +1,134 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+\f3\fnil\fcharset0 HelveticaNeue;\f4\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red42\green0\blue255;\red42\green0\blue255;\red18\green19\blue24;
+\red249\green249\blue249;\red18\green19\blue24;\red255\green255\blue255;\red128\green0\blue0;\red149\green96\blue55;
+\red142\green0\blue198;\red0\green100\blue100;\red0\green0\blue128;\red0\green0\blue255;\red255\green0\blue0;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c16471\c0\c100000;\cssrgb\c8627\c9804\c12157;
+\cssrgb\c98039\c98039\c98039;\cssrgb\c8627\c9804\c12157;\cssrgb\c100000\c100000\c100000;\csgenericrgb\c50196\c0\c0;\csgenericrgb\c58431\c37647\c21569;
+\csgenericrgb\c55686\c0\c77647;\csgenericrgb\c0\c39216\c39216;\csgenericrgb\c0\c0\c50196;\csgenericrgb\c0\c0\c100000;\csgenericrgb\c100000\c0\c0;
+}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 OTP Login\
+\
+Tablas:  User Credentials, Permission, ,
+\f1 \cf2 cashpayment (Id primary and casheer sort key), ErrorCashPayment, profile, cashpaymentsplit \cf3 (Id primary and 
+\f2\b\fs28 \cf4 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 datePayment sort key)\
+\
+create mysql database called approbe
+\f1\b0\fs24 \cf2 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+
+\f0 \cf0 \
+\
+variables de entorno: 
+\f3\fs28 \cf6 \cb7 \expnd0\expndtw0\kerning0
+AUTH_PASS, URL_OTP\
+\
+\{\
+  "id": \{\
+    "S": "cajero"\
+  \},\
+  "permission": \{\
+    "SS": [\
+      "Historial",\
+      "Recaudo"\
+    ]\
+  \}\
+\}\
+\
+\{\
+  "id": \{\
+    "S": "coordinador"\
+  \},\
+  "permission": \{\
+    "SS": [\
+      "Dispersion",\
+      "Historial",\
+      "Recaudo"\
+    ]\
+  \}\
+\}\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs24 \cf8 \cb1 \kerning1\expnd0\expndtw0 CREATE
+\f1\b0 \cf0  
+\f4\b \cf8 TABLE
+\f1\b0 \cf0  \cf9 cashcollection\cf0 .\cf10 cashpayment\cf0  (\
+	\cf11 id\cf0  
+\f4\b \cf12 BIGINT
+\f1\b0 \cf0  
+\f4\b \cf8 auto_increment
+\f1\b0 \cf0  
+\f4\b \cf8 NOT
+\f1\b0 \cf0  
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 casheer\cf0  
+\f4\b \cf12 INT
+\f1\b0 \cf0  
+\f4\b \cf8 NOT
+\f1\b0 \cf0  
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 customer\cf0  
+\f4\b \cf12 INT
+\f1\b0 \cf0  
+\f4\b \cf8 NOT
+\f1\b0 \cf0  
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 totalAmmount\cf0  
+\f4\b \cf12 INT
+\f1\b0 \cf0  
+\f4\b \cf8 NOT
+\f1\b0 \cf0  
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 credits\cf0  
+\f4\b \cf12 VARCHAR
+\f1\b0 \cf0 (\cf13 100\cf0 ) 
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 datehour\cf0  
+\f4\b \cf12 varchar
+\f1\b0 \cf0 (\cf13 35\cf0 ) 
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 coreId\cf0  
+\f4\b \cf12 varchar
+\f1\b0 \cf0 (\cf13 35\cf0 ) 
+\f4\b \cf8 NULL
+\f1\b0 \cf0 ,\
+	\cf11 paymentdate\cf0  
+\f4\b \cf12 INT
+\f1\b0 \cf0  
+\f4\b \cf8 NOT
+\f1\b0 \cf0  
+\f4\b \cf8 NULL
+\f1\b0 \cf0 \
+)\
+
+\f4\b \cf8 ENGINE
+\f1\b0 \cf0 =InnoDB\
+
+\f4\b \cf8 DEFAULT
+\f1\b0 \cf0  CHARSET=utf8mb4\
+
+\f4\b \cf8 COLLATE
+\f1\b0 \cf0 =utf8mb4_0900_ai_ci\cf14 ;
+\f3\fs28 \cf6 \cb7 \expnd0\expndtw0\kerning0
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf6 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+	}
