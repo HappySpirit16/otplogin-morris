@@ -35,7 +35,7 @@ export class CdkStack extends cdk.Stack {
       )
     )
 
-    const zipPath = path.join(__dirname, "/../../build/WebHook/WebHook.zip");
+    const zipPath = path.join(__dirname, "/../../build/otplogin/otplogin.zip");
 
     if (!fs.existsSync(zipPath)) {
       console.error("❌ No se encontró el archivo ZIP en:", zipPath);
@@ -44,6 +44,7 @@ export class CdkStack extends cdk.Stack {
 
     console.log("✅ Archivo ZIP encontrado en:", zipPath);
     
+    /*
     const createclientcreditsLambda = new lambda.Function(this, createName("lambda", "clientcredits"), {
       runtime: lambda.Runtime.JAVA_11,
       handler: 'co.approbe.clientcredits.LambdaFunctionHandler::handleRequest',
@@ -51,6 +52,7 @@ export class CdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../../build/clientcredits/clientcredits.zip")),
       role: lambdaRole,
     });
+    */
 
     const createCoreLambda = new lambda.Function(this, createName("lambda", "Core"), {
       runtime: lambda.Runtime.JAVA_11,
@@ -60,6 +62,7 @@ export class CdkStack extends cdk.Stack {
       role: lambdaRole,
     });
 
+    /*
     const createotploginLambda = new lambda.Function(this, createName("lambda", "otplogin"), {
       runtime: lambda.Runtime.JAVA_11,
       handler: 'co.approbe.otplogin.LambdaFunctionHandler::handleRequest',
@@ -67,6 +70,7 @@ export class CdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../../build/otplogin/otplogin.zip")),
       role: lambdaRole,
     });
+    */
 
     const createtransactionscoreLambda = new lambda.Function(this, createName("lambda", "transactionscore"), {
       runtime: lambda.Runtime.JAVA_11,
