@@ -44,15 +44,24 @@ export class CdkStack extends cdk.Stack {
 
     console.log("✅ Archivo ZIP encontrado en:", zipPath);
     
-    /*
     const createclientcreditsLambda = new lambda.Function(this, createName("lambda", "clientcredits"), {
       runtime: lambda.Runtime.JAVA_11,
       handler: 'co.approbe.clientcredits.LambdaFunctionHandler::handleRequest',
       functionName: createName("lambda", "clientcredits"),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../../build/clientcredits/clientcredits.zip")),
       role: lambdaRole,
-    });
-    */
+      environment: {
+        AUDIENCE: "https://sandbox.lms.kordev.io",
+        CLIENT_ID: "twMV6kgIwJItbGgHlPUMQTpTfNGgngcD",
+        DB_PASSWORD: "ApprobeTest1+",
+        DB_URL: "jdbc:mysql://34.150.132.109:3306/cashcollection",
+        DB_USER: "aws",
+        JAVA_TOOL_OPTIONS: "-XX:+TieredCompilation -XX:TieredStopAtLevel=1",
+        SECRET_ID: "F4Vyj_10cNoOr1Mw2A2DSUCTVZJhdWFqLOuKgUJPS6ruRJM65c8S6ZKW2YYV_JTi",
+        URL_CORE: "https://sandbox.lms.kordev.io/",
+        URL_CORE_TOKEN: "https://auth.kordev.io"
+      }
+    });    
 
     const createCoreLambda = new lambda.Function(this, createName("lambda", "Core"), {
       runtime: lambda.Runtime.JAVA_11,
@@ -61,8 +70,7 @@ export class CdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../../build/Core/Core.zip")),
       role: lambdaRole,
     });
-
-    /*
+    
     const createotploginLambda = new lambda.Function(this, createName("lambda", "otplogin"), {
       runtime: lambda.Runtime.JAVA_11,
       handler: 'co.approbe.otplogin.LambdaFunctionHandler::handleRequest',
@@ -70,7 +78,6 @@ export class CdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../../build/otplogin/otplogin.zip")),
       role: lambdaRole,
     });
-    */
 
     const createtransactionscoreLambda = new lambda.Function(this, createName("lambda", "transactionscore"), {
       runtime: lambda.Runtime.JAVA_11,
