@@ -45,7 +45,8 @@ export class CdkStack extends cdk.Stack {
       const arn = Stack.of(this).formatArn({
         service: 'iam',
         resource: 'policy',
-        resourceName: name
+        resourceName: name,
+        region: '',
       });
 
       lambdaRole.addManagedPolicy(
