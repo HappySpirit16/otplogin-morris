@@ -37,11 +37,11 @@ export class CdkStack extends cdk.Stack {
       );
     }
     
+    /*
     // Políticas Customer Managed
     const customerManagedPolicies = [
       'AWSLambdaBasicExecutionRole-efead4fd-cd7f-4f25-ad4b-7857a21fcd52',
-      'lambdaInvocation',
-      'AWSLambdaBasicExecutionRole-c8258075-1288-461d-b4c5-5217ba2ebb3b', 
+      'lambdaInvocation', 
       'lambdaInvoke' 
     ];
     
@@ -57,17 +57,17 @@ export class CdkStack extends cdk.Stack {
         iam.ManagedPolicy.fromManagedPolicyArn(this, `${name}Policy`, arn)
       );
     }
+    */
     
-    /*
     const zipPath = path.join(__dirname, "/../../build/otplogin/otplogin.zip");
 
     if (!fs.existsSync(zipPath)) {
       console.error("❌ No se encontró el archivo ZIP en:", zipPath);
       throw new Error(`Archivo ZIP no encontrado: ${zipPath}`);
     }
-
-    console.log("✅ Archivo ZIP encontrado en:", zipPath);
     
+    console.log("✅ Archivo ZIP encontrado en:", zipPath);
+    /*
     const createclientcreditsLambda = new lambda.Function(this, createName("lambda", "clientcredits"), {
       runtime: lambda.Runtime.JAVA_11,
       handler: 'co.approbe.clientcredits.LambdaFunctionHandler::handleRequest',
