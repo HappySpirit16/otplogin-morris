@@ -25,34 +25,38 @@ export class CdkStack extends cdk.Stack {
       'CloudWatchLambdaInsightsExecutionRolePolicy',
       'AmazonDynamoDBFullAccess',
       'AmazonMQApiFullAccess',
-      'AmazonMQFullAccess'
+      'AmazonMQFullAccess',
+      'AmazonCognitoDeveloperAuthenticatedIdentities',
+      'AmazonCognitoPowerUser',
+      'SecretsManagerReadWrite'
     ];
-
+    
     for (const name of awsManagedPolicies) {
       lambdaRole.addManagedPolicy(
         iam.ManagedPolicy.fromAwsManagedPolicyName(name)
       );
     }
-
-    // Políticas administradas por el cliente
+    
+    // Políticas Customer Managed
     const customerManagedPolicies = [
       'AWSLambdaBasicExecutionRole-efead4fd-cd7f-4f25-ad4b-7857a21fcd52',
       'lambdaInvocation',
-      'secretAccess'
+      'AWSLambdaBasicExecutionRole-c8258075-1288-461d-b4c5-5217ba2ebb3b', 
+      'lambdaInvoke' 
     ];
-
+    
     for (const name of customerManagedPolicies) {
       const arn = Stack.of(this).formatArn({
         service: 'iam',
         resource: 'policy',
         resourceName: name,
-        region: '',
+        region: '', 
       });
-
+    
       lambdaRole.addManagedPolicy(
         iam.ManagedPolicy.fromManagedPolicyArn(this, `${name}Policy`, arn)
       );
-    } 
+    }
     
     /*
     const zipPath = path.join(__dirname, "/../../build/otplogin/otplogin.zip");
