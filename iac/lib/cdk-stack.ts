@@ -21,7 +21,7 @@ export class CdkStack extends cdk.Stack {
 
     // Politicas al rol creado
     const awsManagedPolicies = [
-      'AWSLambdaBasicExecutionRole',
+      'service-role/AWSLambdaBasicExecutionRole',
       'CloudWatchLambdaInsightsExecutionRolePolicy',
       'AmazonDynamoDBFullAccess',
       'AmazonMQApiFullAccess',
