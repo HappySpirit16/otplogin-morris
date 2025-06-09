@@ -5,7 +5,7 @@ import { createName } from "../bin/cdk";
 import * as path from 'path';
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as fs from 'fs';
-import { Stack } from 'aws-cdk-lib';
+// import { Stack } from 'aws-cdk-lib';
 
 export class CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -67,6 +67,7 @@ export class CdkStack extends cdk.Stack {
     }
     
     console.log("✅ Archivo ZIP encontrado en:", zipPath);
+    
     /*
     const createclientcreditsLambda = new lambda.Function(this, createName("lambda", "clientcredits"), {
       runtime: lambda.Runtime.JAVA_11,
